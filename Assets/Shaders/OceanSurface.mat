@@ -30,11 +30,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Freq: 1.85
+    - _Freq: 1.91
     - _Glossiness: 0.5
     - _Metallic: 0
-    - _Steepness: 0.17
+    - _Steepness: 0.1
     m_Colors:
-    - _Color: {r: 0.34901962, g: 0.59607846, b: 0.94509804, a: 0.5254902}
+    - _Color: {r: 0.13980061, g: 0.7264151, b: 0.7207234, a: 0.5411765}
     - _Direction: {r: 1, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

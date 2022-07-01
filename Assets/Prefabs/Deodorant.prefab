@@ -212,5 +212,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7552ee8005c457e45b950e64b84cede7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amp: 35
+  amp: 3
   freq: 1

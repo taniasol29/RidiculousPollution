@@ -16,6 +16,6 @@ public class CollectMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(Mathf.Sin(Time.time * freq) * amp + initPos.x, initPos.y, 0);
+        transform.position = new Vector3(Mathf.Sin(Time.time * freq) * amp + initPos.x, initPos.y, initPos.z);
     }
 }
