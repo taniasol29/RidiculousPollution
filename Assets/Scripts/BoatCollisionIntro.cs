@@ -28,7 +28,7 @@ public class BoatCollisionIntro : MonoBehaviour
     void StartSuccessSequence()
     {
         Debug.Log("Go next level");
-        //isTransitioning = true;
+        
         audioSource.Stop();
         audioSource.PlayOneShot(success);
         successParticle.Play();

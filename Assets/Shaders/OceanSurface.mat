@@ -35,6 +35,6 @@ Material:
     - _Metallic: 0
     - _Steepness: 0.1
     m_Colors:
-    - _Color: {r: 0.13980061, g: 0.7264151, b: 0.7207234, a: 0.5411765}
+    - _Color: {r: 0.40256318, g: 0.78606266, b: 0.8301887, a: 0}
     - _Direction: {r: 1, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

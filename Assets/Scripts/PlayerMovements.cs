@@ -8,14 +8,16 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _velocity;
     private HookInputs _hookInputs;
-    private Rigidbody _rbody;
+    //private Rigidbody _rbody;
     private Vector2 _moveInput;
-    //public bool useGravity = true;
+    public Vector3 hookGravity = Physics.gravity;
+
+    public bool collided = false;
 
     private void Awake()
     {
         _hookInputs = new HookInputs();
-        _rbody = GetComponent<Rigidbody>();
+        //_rbody = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
@@ -28,10 +30,29 @@ public class PlayerMovements : MonoBehaviour
         _hookInputs.Hook.Disable();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         _moveInput = _hookInputs.Hook.Move.ReadValue<Vector2>();
-        _rbody.velocity = _moveInput * _speed;
-        _rbody.AddForce(Physics.gravity * _velocity);
+        transform.position += new Vector3(_moveInput.x, hookGravity.y * Time.deltaTime, 0.0f);
+        Vector3 newPos = transform.position;
+        newPos.x = Mathf.Clamp(newPos.x, -20.0f, 20.0f);
+        transform.position = newPos;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if ((collision.gameObject.tag == "Fish" || collision.gameObject.tag == "Polluant"))
+        {
+            collided = true;
+            ReverseGravity();
+        }
+    }
+
+    public void ReverseGravity()
+    {
+        if (collided)
+        {
+            hookGravity = -Physics.gravity;
+        }
     }
 }

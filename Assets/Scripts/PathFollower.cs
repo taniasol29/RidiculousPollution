@@ -17,6 +17,10 @@ public class PathFollower : MonoBehaviour
     [SerializeField] private float reachDistance = 1.0f;
     public int currentPoint = 0;
 
+    private void Start()
+    {
+        gameObject.transform.position = boatPath[0].position;
+    }
     private void Awake()
     {
         _boatInputs = new BoatInputs();

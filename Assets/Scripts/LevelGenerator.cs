@@ -13,7 +13,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] GameObject wallWaves;
     [SerializeField] GameObject oceanFloor;
     // Hook
-    [SerializeField] GameObject hook;
+    [SerializeField] public GameObject hook;
+    public Vector3 hookPos;
 
     private void GenerateLevel()
     {
