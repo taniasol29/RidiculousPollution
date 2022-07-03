@@ -161,7 +161,6 @@ MonoBehaviour:
   oceanFloor: {fileID: 4776383934384297732, guid: dcd363a74fc98f746872e369712b912b, type: 3}
   hook: {fileID: 621378709902145154, guid: 0075fb488a7cfed408080d0669508a0d, type: 3}
   hookPos: {x: 0, y: 0, z: 0}
-  newCamTarget: {fileID: 2038113484401478649, guid: a48ef093cfa6d38429f7251ad20eae7d, type: 3}
 --- !u!4 &96595888
 Transform:
   m_ObjectHideFlags: 0
@@ -332,7 +331,6 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194230}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -406,18 +404,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58db30ebacd6d69469ad5e5b9dc7fc17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0

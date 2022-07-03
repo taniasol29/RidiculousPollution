@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class CollectMove : MonoBehaviour
 {
+    // Light movements sin
     public float amp;
     public float freq;
     Vector3 initPos;
-    Vector3 hookPos;
+
     public Vector3 currentPos;
     private bool hookInSight = false;
     HingeJoint hj;
+    bool attached = false;
+
+    // Audio
+    [SerializeField] AudioClip fish;
+    [SerializeField] AudioClip polluant;
+    AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         initPos = transform.position;
     }
 
@@ -35,6 +43,21 @@ public class CollectMove : MonoBehaviour
             hj.connectedBody = other.gameObject.GetComponent<Rigidbody>();
             hj.axis = new Vector3(0.0f, 0.0f, 1.0f);
             hookInSight = true;
+            attached = true;
+
+            if(gameObject.tag == "Polluant")
+            {
+                audioSource.pitch = Random.Range(0.5f, 1.0f);
+                audioSource.Stop();
+                audioSource.PlayOneShot(polluant);
+            }
+            else if(gameObject.tag == "Fish")
+            {
+                audioSource.pitch = Random.Range(0.5f, 1.0f);
+                audioSource.Stop();
+                audioSource.PlayOneShot(fish);
+            }
+            
         }
     }
 
@@ -49,6 +72,6 @@ public class CollectMove : MonoBehaviour
     public void BreakJoint()
     {
         Destroy(GetComponent<HingeJoint>());
-        ///hj.enabled = false;
+        //hj.enabled = false;
     }
 }

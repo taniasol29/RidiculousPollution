@@ -8,6 +8,7 @@ public class BoatCollisionIntro : MonoBehaviour
     [SerializeField] float levelLoadDelay = 2.0f;
     [SerializeField] AudioClip success;
     [SerializeField] ParticleSystem successParticle;
+    [SerializeField] ParticleSystem bubblesParticle;
 
     AudioSource audioSource;
 
