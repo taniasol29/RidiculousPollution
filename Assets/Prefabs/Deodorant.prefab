@@ -176,9 +176,11 @@ GameObject:
   m_Component:
   - component: {fileID: 469398}
   - component: {fileID: 2949322757647233569}
+  - component: {fileID: 4287942174852976577}
+  - component: {fileID: -4031985916365899612}
   m_Layer: 0
   m_Name: Deodorant
-  m_TagString: Untagged
+  m_TagString: Polluant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,5 +214,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7552ee8005c457e45b950e64b84cede7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amp: 35
+  amp: 3
   freq: 1
+  currentPos: {x: 0, y: 0, z: 0}
+--- !u!65 &4287942174852976577
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07704503, y: 0.11969096, z: 0.061894212}
+  m_Center: {x: -0.0053838496, y: 0.058678064, z: 0.001864181}
+--- !u!54 &-4031985916365899612
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191300}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -6,7 +6,6 @@ public class LevelGenerator : MonoBehaviour
 {
     // Containers
     private GameObject levelContainer;
-    private GameObject collectiblesContainer;
 
     // Ocean
     [SerializeField] GameObject oceanSurface;
@@ -14,38 +13,26 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] GameObject wallWaves;
     [SerializeField] GameObject oceanFloor;
     // Hook
-    [SerializeField] GameObject hook;
-    // Collectibles up
-    [SerializeField] List<GameObject> collectiblesUp = new List<GameObject>();
-    // Collectibles middle
-    [SerializeField] List<GameObject> collectiblesMiddle = new List<GameObject>();
-    // Collectibles down
-    [SerializeField] List<GameObject> collectiblesDown = new List<GameObject>();
+    [SerializeField] public GameObject hook;
+    public Vector3 hookPos;
+    // Air
+    [SerializeField] public GameObject newCamTarget;
 
     private void GenerateLevel()
     {
         CreateLevelContainers();
-        CreateOcean();
+        //CreateOcean();
         CreateWallGradient();
         CreateWallWaves();
         CreateOceanFloor();
         CreateHook();
-        CreateCollectibles(collectiblesUp, 20.0f, -10.0f, -3.0f, 10.0f, 0.0f);
-        CreateCollectibles(collectiblesUp, -20.0f, -20.0f, -3.0f, 10.0f, -180.0f);
-        CreateCollectibles(collectiblesMiddle, 20.0f, -100.0f, -3.0f, 10.0f, 0.0f);
-        CreateCollectibles(collectiblesMiddle, -20.0f, -110.0f, -3.0f, 10.0f, -180.0f);
-        CreateCollectibles(collectiblesDown, 20.0f, -180.0f, -3.0f, 10.0f, 0.0f);
-        CreateCollectibles(collectiblesDown, -20.0f, -190.0f, -3.0f, 10.0f, -180.0f);
+        //CreateNewCamTarget();
     }
 
     private void CreateLevelContainers()
     {
         // Création du level container
         levelContainer = new GameObject("LevelContainer");
-        // Création du collectibles container
-        collectiblesContainer = new GameObject("Collectibles");
-        // Parenter le collectibles container
-        collectiblesContainer.transform.SetParent(levelContainer.transform, false);
     }
 
     public void CreateOcean()
@@ -94,7 +81,7 @@ public class LevelGenerator : MonoBehaviour
     public void CreateHook()
     {
         float xValue = 0.0f;
-        float yValue = -4.0f;
+        float yValue = -14.0f;
         float zValue = -2.0f;
 
         hook.transform.position = new Vector3(xValue, yValue, zValue);
@@ -103,19 +90,17 @@ public class LevelGenerator : MonoBehaviour
         hook.transform.SetParent(levelContainer.transform, false);
     }
 
-    public void CreateCollectibles(List<GameObject> list, float x, float y, float z, float offset, float rot)
+    private void CreateNewCamTarget()
     {
-        for (int i = 0; i < 8; i++)
-        {
-            int index = Random.Range(0, list.Count);
-            GameObject go = Instantiate(list[index]) as GameObject;
-            go.transform.position = new Vector3(x, y, z);
-            go.transform.Rotate(0.0f, rot, 0.0f, Space.Self);
-            go.transform.SetParent(collectiblesContainer.transform, false);
-            y -= offset;
-        }
-    }
+        float xValue = 0.0f;
+        float yValue = 0.0f;
+        float zValue = -2.0f;
 
+        newCamTarget.transform.position = new Vector3(xValue, yValue, zValue);
+        Vector3 location = newCamTarget.transform.position;
+        newCamTarget = Instantiate<GameObject>(newCamTarget, location, Quaternion.identity);
+        newCamTarget.transform.SetParent(levelContainer.transform, false);
+    }
 
     void Start()
     {

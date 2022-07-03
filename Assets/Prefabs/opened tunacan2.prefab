@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: -927208960861441406}
   m_Layer: 0
   m_Name: opened tunacan2
-  m_TagString: Untagged
+  m_TagString: Polluant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -230,8 +230,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.35, y: 0.1, z: 0.25}
-  m_Center: {x: 0, y: 0.05, z: 0}
+  m_Size: {x: 0.38040772, y: 0.21200715, z: 0.24353032}
+  m_Center: {x: -0.015203762, y: 0.106003575, z: -0.0032348873}
 --- !u!114 &-927208960861441406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,5 +244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7552ee8005c457e45b950e64b84cede7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amp: 28
+  amp: 2
   freq: 1
+  currentPos: {x: 0, y: 0, z: 0}
