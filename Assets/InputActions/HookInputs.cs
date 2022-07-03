@@ -72,6 +72,54 @@ public partial class @HookInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerInteractions"",
+            ""id"": ""7874011a-bef2-4d41-84a6-bf0b0b9fb3d0"",
+            ""actions"": [
+                {
+                    ""name"": ""LeftClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""0eda3c7a-18f4-4277-9d13-de4d1a6f0ce0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""87b67fde-52b3-4d49-9a5b-8d6462506f8c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e07bb0ab-55e6-46e6-aad6-239df9470291"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf1d95db-51d1-451f-a3ab-b5e88f6e7197"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -79,6 +127,10 @@ public partial class @HookInputs : IInputActionCollection2, IDisposable
         // Hook
         m_Hook = asset.FindActionMap("Hook", throwIfNotFound: true);
         m_Hook_Move = m_Hook.FindAction("Move", throwIfNotFound: true);
+        // PlayerInteractions
+        m_PlayerInteractions = asset.FindActionMap("PlayerInteractions", throwIfNotFound: true);
+        m_PlayerInteractions_LeftClick = m_PlayerInteractions.FindAction("LeftClick", throwIfNotFound: true);
+        m_PlayerInteractions_MousePosition = m_PlayerInteractions.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -167,8 +219,54 @@ public partial class @HookInputs : IInputActionCollection2, IDisposable
         }
     }
     public HookActions @Hook => new HookActions(this);
+
+    // PlayerInteractions
+    private readonly InputActionMap m_PlayerInteractions;
+    private IPlayerInteractionsActions m_PlayerInteractionsActionsCallbackInterface;
+    private readonly InputAction m_PlayerInteractions_LeftClick;
+    private readonly InputAction m_PlayerInteractions_MousePosition;
+    public struct PlayerInteractionsActions
+    {
+        private @HookInputs m_Wrapper;
+        public PlayerInteractionsActions(@HookInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LeftClick => m_Wrapper.m_PlayerInteractions_LeftClick;
+        public InputAction @MousePosition => m_Wrapper.m_PlayerInteractions_MousePosition;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerInteractions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerInteractionsActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerInteractionsActions instance)
+        {
+            if (m_Wrapper.m_PlayerInteractionsActionsCallbackInterface != null)
+            {
+                @LeftClick.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnLeftClick;
+                @LeftClick.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnLeftClick;
+                @LeftClick.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnLeftClick;
+                @MousePosition.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnMousePosition;
+            }
+            m_Wrapper.m_PlayerInteractionsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @LeftClick.started += instance.OnLeftClick;
+                @LeftClick.performed += instance.OnLeftClick;
+                @LeftClick.canceled += instance.OnLeftClick;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
+            }
+        }
+    }
+    public PlayerInteractionsActions @PlayerInteractions => new PlayerInteractionsActions(this);
     public interface IHookActions
     {
         void OnMove(InputAction.CallbackContext context);
+    }
+    public interface IPlayerInteractionsActions
+    {
+        void OnLeftClick(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }

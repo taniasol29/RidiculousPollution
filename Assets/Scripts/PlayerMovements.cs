@@ -5,25 +5,22 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovements : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private float _velocity;
+    // Inputs 
     private HookInputs _hookInputs;
-    //private Rigidbody _rbody;
     private Vector2 _moveInput;
+
+    // Hook physics
     public Vector3 hookGravity = Physics.gravity;
-    List<GameObject> collectibles = new List<GameObject>();
     [SerializeField] private float limitHookPos;
+    private bool collided = false;
+
+    // Collectibles
+    List<GameObject> collectibles = new List<GameObject>();
     [SerializeField] private float limitUpPos;
-
-    public bool collided = false;
-
-    //[Header("Air")]
-    //private Transform camTarget;
 
     private void Awake()
     {
         _hookInputs = new HookInputs();
-        //_rbody = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
@@ -74,13 +71,10 @@ public class PlayerMovements : MonoBehaviour
 
         if(pos.y >= limitHookPos)
         {
-            Debug.Log("Air state");
+            //Debug.Log("Air state");
             //hookGravity = Vector3.zero;
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             ExplodeCollectibles();
-            //if (camTarget != null)
-            //camTarget = new GameObject("up").transform;
-            //Camera.main.GetComponent<FollowCamera>().target = newCamTarget;
         }
     }
 
@@ -94,8 +88,7 @@ public class PlayerMovements : MonoBehaviour
             if(upLimit.y < limitUpPos)
             {
                 Debug.Log("UpLimit moins limitPos : " + upLimit.y);
-                
-                forceSpeed = 0.35f;
+                forceSpeed = Random.Range(0.3f, 0.4f);
             }
             else if(upLimit.y > limitUpPos)
             {
@@ -105,12 +98,15 @@ public class PlayerMovements : MonoBehaviour
             }
 
             Debug.Log("ForceSpeed :" + forceSpeed);
-            Vector3 pos = new Vector3(Random.Range(-forceSpeed, forceSpeed), forceSpeed, 0.0f);
+            Vector3 pos = new Vector3(Random.Range(-forceSpeed * 0.5f, forceSpeed * 0.5f), forceSpeed, 0.0f);
             col.GetComponent<CollectMove>().BreakJoint();
             var rb = col.GetComponent<Rigidbody>(); //.useGravity = true;
             rb.useGravity = true;
-
-            rb.AddForce(pos, ForceMode.Impulse); 
+            if(rb.velocity.magnitude < 20.0f)
+            {
+                rb.AddForce(pos, ForceMode.VelocityChange);
+            }
+            col.GetComponent<BoxCollider>().enabled = true;
         }
-    } 
+    }
 }

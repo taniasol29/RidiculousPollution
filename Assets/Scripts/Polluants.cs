@@ -10,6 +10,8 @@ public class Polluants : MonoBehaviour
     private float pointValue;
     private GameObject polluantContainer;
 
+    private GameObject objectToDestroy;
+
     private void Start()
     {
         polluantContainer = new GameObject("Polluant Container");
@@ -65,6 +67,4 @@ public class Polluants : MonoBehaviour
             y -= offset;
         }
     }
-
-
 }
