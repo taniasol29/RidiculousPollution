@@ -9,6 +9,8 @@ Shader "Custom/OceanSurface"
         _Direction("Direction", Vector) = (1.0, 0.0, 0.0, 1.0)
         _Steepness("Steepness", Range(0.1, 1.0)) = 0.5
         _Freq("Frequency", Range(1.0, 10.0)) = 1.0
+        _Glossiness("Glossiness", Range(0.0, 1.0)) = 0.0
+        _Metallic("Metallic", Range(0.0, 1.0)) = 0.0
     }
     SubShader
     {

@@ -31,8 +31,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _Freq: 1.91
-    - _Glossiness: 0.5
-    - _Metallic: 0
+    - _Glossiness: 0
+    - _Metallic: 0.102
     - _Steepness: 0.1
     m_Colors:
     - _Color: {r: 0.40256318, g: 0.78606266, b: 0.8301887, a: 0}

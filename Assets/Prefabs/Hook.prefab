@@ -102,6 +102,8 @@ MonoBehaviour:
   _speed: 15
   _velocity: 30
   hookGravity: {x: 0, y: -9.81, z: 0}
+  limitHookPos: 4
+  limitUpPos: 40
   collided: 0
 --- !u!114 &971315074962860474
 MonoBehaviour:

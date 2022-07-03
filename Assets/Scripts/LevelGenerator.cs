@@ -15,6 +15,8 @@ public class LevelGenerator : MonoBehaviour
     // Hook
     [SerializeField] public GameObject hook;
     public Vector3 hookPos;
+    // Air
+    [SerializeField] public GameObject newCamTarget;
 
     private void GenerateLevel()
     {
@@ -24,6 +26,7 @@ public class LevelGenerator : MonoBehaviour
         CreateWallWaves();
         CreateOceanFloor();
         CreateHook();
+        //CreateNewCamTarget();
     }
 
     private void CreateLevelContainers()
@@ -85,6 +88,18 @@ public class LevelGenerator : MonoBehaviour
         Vector3 location = hook.transform.position;
         hook = Instantiate<GameObject>(hook, location, Quaternion.identity);
         hook.transform.SetParent(levelContainer.transform, false);
+    }
+
+    private void CreateNewCamTarget()
+    {
+        float xValue = 0.0f;
+        float yValue = 0.0f;
+        float zValue = -2.0f;
+
+        newCamTarget.transform.position = new Vector3(xValue, yValue, zValue);
+        Vector3 location = newCamTarget.transform.position;
+        newCamTarget = Instantiate<GameObject>(newCamTarget, location, Quaternion.identity);
+        newCamTarget.transform.SetParent(levelContainer.transform, false);
     }
 
     void Start()

@@ -45,4 +45,10 @@ public class CollectMove : MonoBehaviour
             transform.position = new Vector3(Mathf.Sin(Time.time * freq) * amp + initPos.x, initPos.y, initPos.z);
         }
     }
+
+    public void BreakJoint()
+    {
+        Destroy(GetComponent<HingeJoint>());
+        ///hj.enabled = false;
+    }
 }
