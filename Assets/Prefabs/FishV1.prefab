@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: -1271464406934436773}
   - component: {fileID: -890237926670503618}
   - component: {fileID: -5632111993574026195}
-  - component: {fileID: 4306960802181767892}
   - component: {fileID: 1992188297554496506}
   m_Layer: 0
   m_Name: FishV1
@@ -149,19 +148,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
---- !u!114 &4306960802181767892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104517609856167801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72b6d7abfd4ef5244939960974479e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
 --- !u!82 &1992188297554496506
 AudioSource:
   m_ObjectHideFlags: 0

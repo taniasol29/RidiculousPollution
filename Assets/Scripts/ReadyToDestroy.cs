@@ -5,7 +5,7 @@ using UnityEngine;
 public class ReadyToDestroy : MonoBehaviour
 {
     private int hitNb = 0;
-    [SerializeField] int hitBeforeDestroy = 3;
+    [SerializeField] int hitBeforeDestroy = 1;
 
     public bool IsReadyToDestroy()
     {

@@ -5,62 +5,94 @@ using UnityEngine.InputSystem;
 
 public class DestroyCollectible : MonoBehaviour
 {
-    public GameObject manager;
+    //public GameObject manager;
 
-    HookInputs hookInputs;
-    HookInputs.PlayerInteractionsActions playerInteractionsActions;
-    private Vector3 mousePos = Vector3.zero;
-    float isLeftClick;
+    //HookInputs hookInputs;
+    //HookInputs.PlayerInteractionsActions playerInteractionsActions;
+    //private Vector3 mousePos = Vector3.zero;
+    //float isLeftClick;
+
+    [SerializeField] private InputActionAsset playerInputs;
+    [SerializeField] private InputAction leftClick;
+    [SerializeField] private Camera cam;
+
+    [SerializeField] ParticleSystem explosion;
+
 
     private void Awake()
     {
-        hookInputs = new HookInputs();
-        playerInteractionsActions = hookInputs.PlayerInteractions;
-        playerInteractionsActions.LeftClick.performed += ctx => isLeftClick = ctx.ReadValue<float>();
-        playerInteractionsActions.MousePosition.performed += ctx => mousePos = ctx.ReadValue<Vector2>();
+        //hookInputs = new HookInputs();
+        //playerInteractionsActions = hookInputs.PlayerInteractions;
+        //playerInteractionsActions.LeftClick.started += ctx => isLeftClick = ctx.ReadValue<float>();
+        //playerInteractionsActions.MousePosition.performed += ctx => mousePos = ctx.ReadValue<Vector2>();
+
+        var aMap = playerInputs.FindActionMap("PlayerInteractions");
+        leftClick = aMap.FindAction("LeftClick");
+        leftClick.started += OnLeftClick;
     }
+
+    
+
 
     private void OnEnable()
     {
-        hookInputs.Enable();
-    }
+        //hookInputs.Enable();
 
+        leftClick.Enable();
+    }
     private void OnDisable()
     {
-        hookInputs.Disable();
+        //hookInputs.Disable();
     }
 
     private void Start()
     {
-        manager = GameObject.Find("LevelManager");
+        //manager = GameObject.Find("LevelManager");
+        explosion = gameObject.GetComponent<ParticleSystem>();
     }
 
-    private bool LeftMouseClick()
-    {
-        if(isLeftClick == 1.0f)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    //private bool LeftMouseClick()
+    //{
+    //    if(isLeftClick == 1.0f)
+    //    {
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        return false;
+    //    }
+    //}
 
-    private void Update()
-    {
-        if(LeftMouseClick())
-        {
-            RaycastHit hit;
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-            //Debug.Log("mouse pos :" + worldPos);
+    //private void Update()
+    //{
+    //    if (LeftMouseClick())
+    //    {
+    //        RaycastHit hit;
+    //        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+    //        Debug.Log("mouse pos :" + worldPos);
 
-            if (Physics.Raycast(worldPos, Vector3.forward, out hit))
+    //        if (Physics.Raycast(worldPos, Vector3.forward, out hit))
+    //        {
+    //            if (hit.collider.gameObject.GetComponent<ReadyToDestroy>().IsReadyToDestroy())
+    //            {
+    //                Destroy(hit.collider.gameObject);
+    //            }
+    //        }
+    //    }
+    //}
+
+    void OnLeftClick(InputAction.CallbackContext context)
+    {
+        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            //Debug.DrawLine(ray.origin, hit.point);
+            if (hit.transform.CompareTag("Fish") || hit.transform.CompareTag("Polluant"))
             {
-                //if (hit.collider.gameObject.GetComponent<ReadyToDestroy>().IsReadyToDestroy())
-                //{
-                    Destroy(hit.collider.gameObject);
-                //}
+                //Debug.Log("ok");
+                Destroy(hit.collider.gameObject);
+                explosion.Play();
             }
         }
     }
