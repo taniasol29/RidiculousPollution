@@ -15,7 +15,7 @@ public class PlayerMovements : MonoBehaviour
     private bool collided = false;
 
     // Collectibles
-    List<GameObject> collectibles = new List<GameObject>();
+    public List<GameObject> collectibles = new List<GameObject>();
     [SerializeField] private float limitUpPos;
 
     private void Awake()
@@ -87,22 +87,26 @@ public class PlayerMovements : MonoBehaviour
             var upLimit = col.transform.position;
             if(upLimit.y < limitUpPos)
             {
-                Debug.Log("UpLimit moins limitPos : " + upLimit.y);
-                forceSpeed = Random.Range(0.3f, 0.4f);
+                //Debug.Log("UpLimit moins limitPos : " + upLimit.y);
+                forceSpeed = Random.Range(0.5f, 0.8f);
             }
             else if(upLimit.y > limitUpPos)
             {
-                Debug.Log("UpLimitplus limitPos : " + upLimit.y);
+                //Debug.Log("UpLimitplus limitPos : " + upLimit.y);
                 forceSpeed = 0.01f;
                 hookGravity = Vector3.zero;
             }
 
             Debug.Log("ForceSpeed :" + forceSpeed);
-            Vector3 pos = new Vector3(Random.Range(-forceSpeed * 0.5f, forceSpeed * 0.5f), forceSpeed, 0.0f);
+            // pas les mêmes intensités en x et y ; y hauteur max
+            //Vector3 pos = new Vector3(Random.Range(-forceSpeed * 0.5f, forceSpeed * 0.5f), forceSpeed, 0.0f);
+            Vector3 pos = new Vector3(Random.Range(-1f, 1f), forceSpeed, 0.0f);
             col.GetComponent<CollectMove>().BreakJoint();
-            var rb = col.GetComponent<Rigidbody>(); //.useGravity = true;
+
+            var rb = col.GetComponent<Rigidbody>();
             rb.useGravity = true;
-            if(rb.velocity.magnitude < 20.0f)
+
+            if(rb.velocity.magnitude < 30.0f)
             {
                 rb.AddForce(pos, ForceMode.VelocityChange);
             }

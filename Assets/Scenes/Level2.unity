@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 793849318}
   - component: {fileID: 793849321}
   - component: {fileID: 793849322}
+  - component: {fileID: 793849323}
+  - component: {fileID: 793849324}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -235,9 +237,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.326
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -319,6 +321,45 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &793849323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793849317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b6d7abfd4ef5244939960974479e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInputs: {fileID: -944628639613478452, guid: 2f1cd6f5f877fe14c91fef14703cb713, type: 3}
+  leftClick:
+    m_Name: Left Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 657f1320-ba21-4ecb-9291-609775ff1a6c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  cam: {fileID: 793849319}
+  explosion: {fileID: 0}
+--- !u!114 &793849324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793849317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e384ad7f67eaf4daa714a75c488643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: 879f492d45f36a14ba152cc3423604ab, type: 3}
+  audioSource: {fileID: 0}
 --- !u!1 &1113423593
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,5 +540,6 @@ MonoBehaviour:
   wallGradient: {fileID: 8882930892167932205, guid: 30c247793d45a0049bdeb248196b94cf, type: 3}
   wallWaves: {fileID: 2435448410663242485, guid: 0b8628735e6b2d94b801f117a637539e, type: 3}
   oceanFloor: {fileID: 4776383934384297732, guid: dcd363a74fc98f746872e369712b912b, type: 3}
+  airCollider: {fileID: 4975411559488751135, guid: 0c0dff7dae710e74eba180ed3c2b711b, type: 3}
   hook: {fileID: 621378709902145154, guid: 2aba39506d50e74408d66f2d94d20987, type: 3}
   hookPos: {x: 0, y: 0, z: 0}

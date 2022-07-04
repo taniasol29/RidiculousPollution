@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33424522025894000}
   - component: {fileID: 23089995499348204}
   - component: {fileID: 5740809224920605228}
-  - component: {fileID: 7016290664257453557}
   - component: {fileID: -920643387571469647}
   - component: {fileID: 2834192829490146443}
   - component: {fileID: -2897535085257324963}
@@ -105,19 +104,6 @@ MonoBehaviour:
   currentPos: {x: 0, y: 0, z: 0}
   fish: {fileID: 8300000, guid: 423a1249cb60f114390c3839ecb0fe2f, type: 3}
   polluant: {fileID: 8300000, guid: 6ff2d80d668d7dc4da8c1059a19cfa0f, type: 3}
---- !u!114 &7016290664257453557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924217154915476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72b6d7abfd4ef5244939960974479e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
 --- !u!65 &-920643387571469647
 BoxCollider:
   m_ObjectHideFlags: 0
