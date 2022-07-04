@@ -15,7 +15,7 @@ public class PlayerMovements : MonoBehaviour
     private bool collided = false;
 
     // Collectibles
-    List<GameObject> collectibles = new List<GameObject>();
+    public List<GameObject> collectibles = new List<GameObject>();
     [SerializeField] private float limitUpPos;
 
     private void Awake()
