@@ -101,7 +101,7 @@ public class LevelGenerator : MonoBehaviour
         airCollider.transform.SetParent(levelContainer.transform, false);
     }
 
-    void Start()
+    void Awake()
     {
         GenerateLevel();
         Camera.main.GetComponent<FollowCamera>().target = hook.transform;

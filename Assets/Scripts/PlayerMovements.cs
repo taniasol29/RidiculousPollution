@@ -16,11 +16,21 @@ public class PlayerMovements : MonoBehaviour
 
     // Collectibles
     public List<GameObject> collectibles = new List<GameObject>();
+    public List<GameObject> polluantsOnHook = new List<GameObject>();
+    public List<GameObject> fishOnHook = new List<GameObject>();
+    public bool isCollected = false;
+    public bool isOutOfWater = false;
+    public int polluantToGo;
     [SerializeField] private float limitUpPos;
 
     private void Awake()
     {
         _hookInputs = new HookInputs();
+    }
+
+    private void Start()
+    {
+        polluantToGo = GameObject.Find("LevelManager").GetComponent<Polluants>().totalPolluants;
     }
 
     private void OnEnable()
@@ -53,6 +63,15 @@ public class PlayerMovements : MonoBehaviour
         {
             collided = true;
             collectibles.Add(collision.gameObject);
+            if(collision.gameObject.tag == "Polluant")
+            {
+                polluantsOnHook.Add(collision.gameObject);
+                --polluantToGo;
+            }
+            else
+            {
+                fishOnHook.Add(collision.gameObject);
+            }
             ReverseGravity();
         }
     }
@@ -81,7 +100,8 @@ public class PlayerMovements : MonoBehaviour
     public void ExplodeCollectibles()
     {
         var forceSpeed = 0.0f;
-        
+        isCollected = true;
+
         foreach (var col in collectibles)
         {
             var upLimit = col.transform.position;
@@ -93,11 +113,11 @@ public class PlayerMovements : MonoBehaviour
             else if(upLimit.y > limitUpPos)
             {
                 //Debug.Log("UpLimitplus limitPos : " + upLimit.y);
+                isOutOfWater = true;
                 forceSpeed = 0.01f;
                 hookGravity = Vector3.zero;
             }
 
-            Debug.Log("ForceSpeed :" + forceSpeed);
             // pas les mêmes intensités en x et y ; y hauteur max
             //Vector3 pos = new Vector3(Random.Range(-forceSpeed * 0.5f, forceSpeed * 0.5f), forceSpeed, 0.0f);
             Vector3 pos = new Vector3(Random.Range(-1f, 1f), forceSpeed, 0.0f);

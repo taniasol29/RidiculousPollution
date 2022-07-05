@@ -9,6 +9,7 @@ public class Polluants : MonoBehaviour
     private float speed;
     private float pointValue;
     private GameObject polluantContainer;
+    public int totalPolluants = 0;
 
     private void Start()
     {
@@ -34,30 +35,35 @@ public class Polluants : MonoBehaviour
             if (zone1)
             {
                 GameObject go = Instantiate(polluants[0]) as GameObject;
+                ++totalPolluants;
                 go.transform.position = new Vector3(x, y, z);
                 go.transform.SetParent(polluantContainer.transform, false);
             }
             if (zone2)
             {
                 GameObject go = Instantiate(polluants[1]) as GameObject;
+                ++totalPolluants;
                 go.transform.position = new Vector3(x, y, z);
                 go.transform.SetParent(polluantContainer.transform, false);
             }
             if (zone3)
             {
                 GameObject go = Instantiate(polluants[2]) as GameObject;
+                ++totalPolluants;
                 go.transform.position = new Vector3(x, y, z);
                 go.transform.SetParent(polluantContainer.transform, false);
             }
             if (zone4)
             {
                 GameObject go = Instantiate(polluants[3]) as GameObject;
+                ++totalPolluants;
                 go.transform.position = new Vector3(x, y, z);
                 go.transform.SetParent(polluantContainer.transform, false);
             }
             if (zone5)
             {
                 GameObject go = Instantiate(polluants[4]) as GameObject;
+                ++totalPolluants;
                 go.transform.position = new Vector3(x, y, z);
                 go.transform.SetParent(polluantContainer.transform, false);
             }

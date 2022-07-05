@@ -18,8 +18,11 @@ public class DestroyCollectible : MonoBehaviour
 
     [SerializeField] ParticleSystem explosion;
 
+
     //values
     public int goValue;
+    public int totalFishValueOnHook;
+    public int totalPolluantValueOnHook;
     public bool isDestroyed = false;
 
     private void Awake()
@@ -49,6 +52,7 @@ public class DestroyCollectible : MonoBehaviour
     {
         //manager = GameObject.Find("LevelManager");
         explosion = gameObject.GetComponent<ParticleSystem>();
+
     }
 
     //private bool LeftMouseClick()
@@ -87,11 +91,18 @@ public class DestroyCollectible : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            //Debug.DrawLine(ray.origin, hit.point);
             if (hit.transform.CompareTag("Fish") || hit.transform.CompareTag("Polluant"))
             {
-                //Debug.Log("ok");
                 goValue = hit.collider.gameObject.GetComponent<CollectProperties>().collectValue;
+                Debug.Log("goValue : "+ goValue);
+                if(hit.transform.CompareTag("Polluant"))
+                {
+                    totalPolluantValueOnHook += goValue;
+                }
+                if (hit.transform.CompareTag("Fish"))
+                {
+                    totalFishValueOnHook += goValue;
+                }
                 isDestroyed = true;
                 Destroy(hit.collider.gameObject);
                 explosion.Play();
