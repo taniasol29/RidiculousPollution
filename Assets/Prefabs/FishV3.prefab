@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3072274915428936979}
   - component: {fileID: -5724362419130548836}
   - component: {fileID: 67466598313601507}
+  - component: {fileID: 4455514958037289188}
   m_Layer: 0
   m_Name: FishV3
   m_TagString: Fish
@@ -244,3 +245,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4455514958037289188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2206852426022253465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa394bb898161844f83df3696a325fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollectProperties : MonoBehaviour
 {
-    private int collectValue;
+    public int collectValue;
 
     void Start()
     {

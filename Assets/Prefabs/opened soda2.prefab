@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: -161145809241781392}
   - component: {fileID: 3056140951897243074}
   - component: {fileID: -177920136131715077}
+  - component: {fileID: 8743368010314947717}
   m_Layer: 0
   m_Name: opened soda2
   m_TagString: Polluant
@@ -345,3 +346,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8743368010314947717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8869805053141849092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa394bb898161844f83df3696a325fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

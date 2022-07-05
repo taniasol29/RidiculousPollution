@@ -6,7 +6,7 @@ using UnityEngine;
 public struct Inventaire
 {
     [UnityEngine.SerializeField]
-    int totalCoins;
+    public int totalCoins;
     [UnityEngine.SerializeField]
-    int ccollectedCoins;
+    public int collectedCoins;
 }

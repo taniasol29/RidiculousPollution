@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -920643387571469647}
   - component: {fileID: 2834192829490146443}
   - component: {fileID: -2897535085257324963}
+  - component: {fileID: -1847214133143874034}
   m_Layer: 0
   m_Name: barrel
   m_TagString: Polluant
@@ -229,3 +230,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1847214133143874034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924217154915476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa394bb898161844f83df3696a325fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

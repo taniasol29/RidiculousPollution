@@ -18,6 +18,9 @@ public class DestroyCollectible : MonoBehaviour
 
     [SerializeField] ParticleSystem explosion;
 
+    //values
+    public int goValue;
+    public bool isDestroyed = false;
 
     private void Awake()
     {
@@ -30,9 +33,6 @@ public class DestroyCollectible : MonoBehaviour
         leftClick = aMap.FindAction("LeftClick");
         leftClick.started += OnLeftClick;
     }
-
-    
-
 
     private void OnEnable()
     {
@@ -91,6 +91,8 @@ public class DestroyCollectible : MonoBehaviour
             if (hit.transform.CompareTag("Fish") || hit.transform.CompareTag("Polluant"))
             {
                 //Debug.Log("ok");
+                goValue = hit.collider.gameObject.GetComponent<CollectProperties>().collectValue;
+                isDestroyed = true;
                 Destroy(hit.collider.gameObject);
                 explosion.Play();
             }
