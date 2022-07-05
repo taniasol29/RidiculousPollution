@@ -15,6 +15,7 @@ public class DestroyCollectible : MonoBehaviour
     [SerializeField] private InputActionAsset playerInputs;
     [SerializeField] private InputAction leftClick;
     [SerializeField] private Camera cam;
+    [SerializeField] float destroyDelay = 2.0f;
 
     [SerializeField] ParticleSystem explosion;
 
@@ -39,6 +40,8 @@ public class DestroyCollectible : MonoBehaviour
         //hookInputs.Enable();
 
         leftClick.Enable();
+        explosion.Play();
+        Invoke("Destroy", destroyDelay);
     }
     private void OnDisable()
     {
@@ -94,7 +97,6 @@ public class DestroyCollectible : MonoBehaviour
                 goValue = hit.collider.gameObject.GetComponent<CollectProperties>().collectValue;
                 isDestroyed = true;
                 Destroy(hit.collider.gameObject);
-                explosion.Play();
             }
         }
     }

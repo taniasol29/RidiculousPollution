@@ -1322,7 +1322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114027131943094286, guid: 0f01a18a54c6cd440a6bef85c0a4ac31, type: 3}
       propertyPath: m_text
-      value: PLAY
+      value: QUIT
       objectReference: {fileID: 0}
     - target: {fileID: 114027131943094286, guid: 0f01a18a54c6cd440a6bef85c0a4ac31, type: 3}
       propertyPath: m_fontSize

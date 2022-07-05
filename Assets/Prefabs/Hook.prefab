@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 971315074962860474}
   - component: {fileID: 2374342418951721492}
   - component: {fileID: 1733239378507838539}
+  - component: {fileID: 3045028858800386199}
   m_Layer: 0
   m_Name: Hook
   m_TagString: Player
@@ -101,7 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hookGravity: {x: 0, y: -9.81, z: 0}
   limitHookPos: 35
+  collectibles: []
   limitUpPos: 40
+  bankCanvas: {fileID: 0}
 --- !u!114 &971315074962860474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +165,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &3045028858800386199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621378709902145154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c771bfb4c63232341b03d58af880c31c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
