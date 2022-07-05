@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovements : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class PlayerMovements : MonoBehaviour
     public bool isOutOfWater = false;
     public int polluantToGo;
     [SerializeField] private float limitUpPos;
+
+    public Canvas bankCanvas;
+    private bool exploded = false;
+    private float time = 0;
+    private bool exit = false;
 
     private void Awake()
     {
@@ -49,7 +55,7 @@ public class PlayerMovements : MonoBehaviour
         transform.position += new Vector3(_moveInput.x * 15.0f, hookGravity.y, 0.0f) * Time.deltaTime;
         Vector3 newPos = transform.position;
         newPos.x = Mathf.Clamp(newPos.x, -20.0f, 20.0f);
-        transform.position = newPos;  
+        transform.position = newPos;
     }
 
     private void FixedUpdate()
@@ -129,8 +135,34 @@ public class PlayerMovements : MonoBehaviour
             if(rb.velocity.magnitude < 30.0f)
             {
                 rb.AddForce(pos, ForceMode.VelocityChange);
+                exploded = true;
+                StartCoroutine(Wait());
             }
             col.GetComponent<BoxCollider>().enabled = true;
         }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(10.0f);
+        LeaveLevel();
+    }
+
+    void LeaveLevel()
+    {
+        if (exploded)
+        {
+            SceneManager.LoadScene("Bank");
+        }
+    }
+
+    public void GoMainMenu()
+    {
+        SceneManager.LoadScene("Intro1");
+    }
+
+    public void QuitGame()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }

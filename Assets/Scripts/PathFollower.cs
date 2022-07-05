@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PathFollower : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class PathFollower : MonoBehaviour
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float turningSpeed = 4.0f;
     [SerializeField] private float reachDistance = 1.0f;
+
     public int currentPoint = 0;
+
+    private bool startGame = false;
 
     private void Start()
     {
@@ -25,6 +29,11 @@ public class PathFollower : MonoBehaviour
     {
         _boatInputs = new BoatInputs();
         _rbody = GetComponent<Rigidbody>();
+
+        if(SceneManager.GetActiveScene().name != "Intro1")
+        {
+            startGame = true;
+        }   
     }
 
     private void OnEnable()
@@ -41,8 +50,9 @@ public class PathFollower : MonoBehaviour
     {
         moveVec = _boatInputs.BoatMovements.Move.ReadValue<Vector2>();
         //_rbody.velocity = moveVec * speed;
-        MakeBoatMove(boatPath);
-       
+        if (startGame)
+            MakeBoatMove(boatPath);
+        
     }
 
     void MakeBoatMove(Transform[] p)
@@ -63,5 +73,16 @@ public class PathFollower : MonoBehaviour
         {
             currentPoint = 0;
         }
+    }
+
+    public void OnGo()
+    {
+        startGame = true;
+    } 
+    
+    public void OnGo2()
+    {
+        startGame = true;
+        SceneManager.LoadScene("Intro2");
     }
 }

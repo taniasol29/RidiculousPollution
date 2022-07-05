@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class BoatCollisionIntro : MonoBehaviour
 {
@@ -11,10 +12,22 @@ public class BoatCollisionIntro : MonoBehaviour
     [SerializeField] ParticleSystem bubblesParticle;
 
     AudioSource audioSource;
+    [SerializeField] TMP_Text coinsCount;
+    private int count = 0;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        coinsCount.text = string.Format("COINS: {0}", count);
+    }
+
+    public void IncreaseCoins()
+    {
+        count++;
     }
 
     void OnTriggerEnter(Collider other)
