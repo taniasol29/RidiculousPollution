@@ -97,6 +97,7 @@ public class DestroyCollectible : MonoBehaviour
                 goValue = hit.collider.gameObject.GetComponent<CollectProperties>().collectValue;
                 isDestroyed = true;
                 Destroy(hit.collider.gameObject);
+                GameObject.Find("BoatCollisions").GetComponent<BoatCollisionIntro>().IncreaseCoins();
             }
         }
     }

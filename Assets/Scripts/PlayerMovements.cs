@@ -124,7 +124,7 @@ public class PlayerMovements : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(7.0f);
+        yield return new WaitForSeconds(10.0f);
         LeaveLevel();
     }
 
